@@ -55,3 +55,13 @@ exports.book_delete = async (req, res) => {
         console.log('We are in the finally block')
     }
 }
+
+exports.book_detail_get = async (req, res) => {
+    try {
+        const book = await Book.findById(req.query.id)
+        res.render('book/detail', {book} )
+    } catch (error) {
+        console.log(error.message)
+        res.send(error.message)
+    }
+}

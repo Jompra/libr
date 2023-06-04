@@ -9,8 +9,14 @@
         <th>Pages</th>
     </tr>
     <% books.forEach(function(book){ %>
+        <!-- /book/detail?id=647898f51c2b7407d29f6c32 -->
         <tr>
-            <td><%= book.title %> </td>
+            <td>
+                <a href="/book/detail?id=<%= book._id %>">
+                    <%= book.title %>
+                </a>
+                
+            </td>
             <td><%= book.author %> </td>
             <td><%= book.genre %> </td>
             <td><%= book.isFiction %> </td>
