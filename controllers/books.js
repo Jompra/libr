@@ -65,3 +65,23 @@ exports.book_detail_get = async (req, res) => {
         res.send(error.message)
     }
 }
+
+exports.book_edit_get = async (req, res) => {
+    try {
+        const book = await Book.findById(req.query.id)
+        res.render('book/edit', {book})
+    } catch (error) {
+        console.log(error.message)
+        res.send(error.message)
+    }
+}
+
+exports.book_edit_post = async (req, res) => {
+    try {
+        console.log(req.body.id)
+        await Book.findByIdAndUpdate(req.body.id, req.body)
+        res.redirect('/book/index')
+    } catch (error) {
+        console.log(error.message)
+    }
+}
