@@ -6,6 +6,8 @@ exports.book_create_get = (req, res) => {
 
 exports.book_create_post = (req, res) => {
     console.log(req.body)
+
+
     const book = new Book(req.body)
 
     book.save()
@@ -18,8 +20,22 @@ exports.book_create_post = (req, res) => {
 }
 
 exports.book_index_get = async (req, res) => {
-    const books = await Book.find()
-    console.log(books)
-    res.render('book/index', { books })
-    // res.render('book/index', { books: books }) //does the same thing
+    try{
+        const books = await Book.find()
+        console.log(books)
+        res.render('book/index', { books })
+        // res.render('book/index', { books: books }) //does the same thing
+    } catch (error) {
+        console.log(error.message)
+        res.send('HMMMMM Something is not right')
+    }
+
+    // Book.find().then((books) =>{
+    //     console.log(books)
+    //     res.render('book/index', {books})
+    // }).catch((error) => {
+    //     console.log(error.message)
+    //     res.send('HMMMMM Something is not right')
+    // })
+
 }
