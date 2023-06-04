@@ -16,7 +16,7 @@
             <td><%= book.isFiction %> </td>
             <td><%= book.numberOfPages %> </td>
             <td>
-                <form method="POST" action="/book/delete?id=<%=book._id%>&_method=DELETE">
+                <form method="POST" action="/book/delete?id=<%=book._id%>">
                     <button type="submit">DELETE</button>
                 </form>
             </td>

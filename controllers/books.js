@@ -41,9 +41,10 @@ exports.book_index_get = async (req, res) => {
 }
 
 exports.book_delete = async (req, res) => {
+    console.log(req.query.id)
     try {
         // Try to execute this code
-        await Book.findByIdAndDelete()
+        await Book.findByIdAndDelete(req.query.id)
         return res.redirect('/book/index')
     } catch (error) {
         // Execute this if there is an error
