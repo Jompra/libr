@@ -9,10 +9,10 @@ exports.book_create_post = (req, res) => {
 
 
     const book = new Book(req.body)
-
     book.save()
         .then(() => {
             console.log('Your book has been saved')
+            return res.redirect('/book/index')
         })
         .catch((err) => {
             console.log('an error occurred', err)
@@ -38,4 +38,19 @@ exports.book_index_get = async (req, res) => {
     //     res.send('HMMMMM Something is not right')
     // })
 
+}
+
+exports.book_delete = async (req, res) => {
+    try {
+        // Try to execute this code
+        await Book.findByIdAndDelete()
+        return res.redirect('/book/index')
+    } catch (error) {
+        // Execute this if there is an error
+        console.log(error.message)
+        res.send(error.message)
+    } finally {
+        // Execute this code no matter what
+        console.log('We are in the finally block')
+    }
 }
