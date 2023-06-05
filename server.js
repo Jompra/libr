@@ -6,6 +6,7 @@ const expressLayouts = require('express-ejs-layouts')
 // Import our Routes
 const indexRoute = require('./routes/index')
 const bookRoute = require('./routes/books')
+const authorRoute = require('./routes/authors')
 
 //Initialise our app
 const app = express()
@@ -22,6 +23,7 @@ app.use(express.urlencoded({
 // Mount our Routes
 app.use('/', indexRoute)
 app.use('/', bookRoute)
+app.use('/', authorRoute)
 
 
 
