@@ -1,7 +1,15 @@
 const Book = require('../models/Book')
+const Author = require('../models/Author')
 
-exports.book_create_get = (req, res) => {
-    res.render('book/add')
+exports.book_create_get = async (req, res) => {
+    try {
+        const authors = await Author.find()
+        res.render('book/add', {authors})
+    } catch (error) {
+        console.log(error.message)
+    }
+
+    
 }
 
 exports.book_create_post = (req, res) => {
@@ -21,7 +29,7 @@ exports.book_create_post = (req, res) => {
 
 exports.book_index_get = async (req, res) => {
     try{
-        const books = await Book.find()
+        const books = await Book.find().populate('author')
         console.log(books)
         res.render('book/index', { books })
         // res.render('book/index', { books: books }) //does the same thing
