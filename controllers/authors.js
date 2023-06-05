@@ -10,6 +10,16 @@ exports.author_create_post = async (req, res) => {
         const author = new Author(req.body)
 
         await author.save()
+
+    } catch (error){
+        console.log(error.message)
+    }
+}
+
+exports.author_index_get = async (req, res) => {
+    try {
+        const authors = await Author.find()
+        res.render('author/index', {authors})
     } catch (error){
         console.log(error.message)
     }
