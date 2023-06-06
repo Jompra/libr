@@ -7,6 +7,7 @@ const expressLayouts = require('express-ejs-layouts')
 const indexRoute = require('./routes/index')
 const bookRoute = require('./routes/books')
 const authorRoute = require('./routes/authors')
+const authRoute = require('./routes/auth')
 
 //Initialise our app
 const app = express()
@@ -27,6 +28,7 @@ app.use(express.urlencoded({
 app.use('/', indexRoute)
 app.use('/', bookRoute)
 app.use('/', authorRoute)
+app.use('/', authRoute)
 
 
 
