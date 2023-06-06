@@ -34,7 +34,7 @@ exports.auth_signin_post = passport.authenticate('local', {
     failureRedirect: '/auth/signin'
 })
 
-exports.auth_logout_get = (req, res) => {
+exports.auth_logout_get = (req, res, next) => {
     req.logout(function(err){
         if (err) {
             return next()

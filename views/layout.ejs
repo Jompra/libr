@@ -13,13 +13,22 @@
         <a href="/book/add">Add New Book</a>
         <a href="/author/add">Add New Author</a>
         <a href="/book/index">View Your Library</a>
-        <a href="/auth/signup">Sign Up</a>
-        <a href="/auth/signin">Sign In</a>
-        <a href="/auth/logout">Log Out</a>
         
+        
+        <% if (currentUser) {%>
+            <a href="/auth/logout">Log Out</a>
+            <br>
+            <%= currentUser.firstName %>
+        <% } else {%>
+            <a href="/auth/signup">Sign Up</a>
+            <a href="/auth/signin">Sign In</a>
+        <% } %>
     </nav>
     <%- body %>
 
+    <% if (currentUser) {%>
+        <%= currentUser.firstName %>
+    <% }%>
     <h3>Shared Footer</h3>
 </body>
 </html>
