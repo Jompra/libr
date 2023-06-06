@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt')
 
 const User = require('../models/User')
+const passport = require('../lib/passportConfig')
 
 exports.auth_signup_get = (req, res) => {
     res.render('auth/signup')
@@ -27,3 +28,8 @@ exports.auth_signup_post = async (req, res) => {
         console.log(error.message)
     }
 }
+
+exports.auth_signin_post = passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/auth/signin'
+})
