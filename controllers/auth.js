@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt')
+
 const User = require('../models/User')
 
 exports.auth_signup_get = (req, res) => {
@@ -12,6 +14,12 @@ exports.auth_signup_post = async (req, res) => {
     try {
         console.log(req.body)
         const user = new User(req.body)
+
+        const hash = bcrypt.hashSync(req.body.password, 10)
+        console.log(hash)
+
+        user.password = hash
+
         await user.save()
 
         res.redirect('/')
