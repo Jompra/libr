@@ -13,8 +13,11 @@ const app = express()
 
 const PORT = 4000
 
+
 app.use(expressLayouts)
 app.set('view engine', 'ejs')
+
+app.use(express.static('public'))
 
 app.use(express.urlencoded({
     extended: true

@@ -17,7 +17,12 @@
                 </a>
                 
             </td>
-            <td><%= book.author[0].name %> </td>
+            
+            <td>
+                <% book.author.forEach(function(obj, i){%>
+                    <%= i + 1 %>:<%= obj.name %>
+                <% }) %>
+            </td>
             <td><%= book.genre %> </td>
             <td><%= book.isFiction %> </td>
             <td><%= book.numberOfPages %> </td>
