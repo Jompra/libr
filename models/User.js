@@ -27,6 +27,11 @@ const userSchema = mongoose.Schema({
     timestamps: true
 })
 
+userSchema.methods.verifyPassword = function(password){
+    console.log('Verifying Password: ', password)
+    return bcrypt.compareSync(password, this.password)
+}
+
 const User = mongoose.model('User', userSchema)
 
 module.exports = User
